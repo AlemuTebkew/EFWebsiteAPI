@@ -18,6 +18,10 @@ class TeamController extends Controller
     {
         return Team::all();
     }
+    public function get_teams()
+    {
+        return Team::where('is_active', 1)->get();
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -28,15 +32,14 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $photo=null;
+        $photo = null;
         try {
             if ($request->photo) {
                 $photo = $this->uploadImage($request->photo);
             }
 
             return $photo ?  Team::create([...$request->all(), 'photo' => $photo])
-             : Team::create([...$request->all()]);
-
+                : Team::create([...$request->all()]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -63,15 +66,15 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
 
-        $photo=null;
+        $photo = null;
         try {
 
             if ($request->photo) {
                 $photo = $this->uploadImage($request->photo);
             }
 
-             $photo ?  $team->update([...$request->all(), 'photo' => $photo])
-             : $team->update($request->all());
+            $photo ?  $team->update([...$request->all(), 'photo' => $photo])
+                : $team->update($request->all());
 
             return $team;
         } catch (\Throwable $th) {

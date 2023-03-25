@@ -49,9 +49,11 @@ Route::apiResource('/applicants',ApplicantController::class);
 
 Route::get('/get_contacts',[RequestedServiceController::class,'get_contacts']);
 Route::get('/get_jobs',[JobController::class,'get_jobs']);
+Route::post('/logout',[LoginController::class,'logout']);
 
 });
 Route::apiResource('/projects',ProjectController::class);
+Route::get('/get_teams',[TeamController::class,'get_teams']);
 Route::apiResource('/teams',TeamController::class);
 Route::apiResource('/users',UserController::class);
 Route::apiResource('/roles',RoleController::class);

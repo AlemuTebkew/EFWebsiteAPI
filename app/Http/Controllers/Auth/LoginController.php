@@ -74,7 +74,7 @@ class LoginController extends Controller
     {
         //  return  $request->user();
         $request->user()->currentAccessToken()->delete();
-        return response()->json([$request->user()], 200);
+        return response()->json('logout', 200);
     }
 
     public function changePassword(Request $request, $id)
