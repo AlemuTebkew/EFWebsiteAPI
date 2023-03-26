@@ -55,10 +55,10 @@ class ApplicantController extends Controller
 
             DB::beginTransaction();
 
-            $ex = Applicant::where('email', $request->email)->where('job_id', $request->job_id)->first();
-            if ($ex) {
-                return response()->json('Duplicate Application Not Allowed', 400);
-            }
+            // $ex = Applicant::where('email', $request->email)->where('job_id', $request->job_id)->first();
+            // if ($ex) {
+            //     return response()->json('Duplicate Application Not Allowed', 400);
+            // }
             $education = $request->education;
             $experiance = $request->experience;
             $certificate = $request->certificate;

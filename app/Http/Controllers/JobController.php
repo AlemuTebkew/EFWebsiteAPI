@@ -64,7 +64,7 @@ class JobController extends Controller
     {
         try {
             $job->update($request->all());
-            return $job;
+            return response()->json($job->load('user'),200);
         } catch (\Throwable $th) {
             throw $th;
         }

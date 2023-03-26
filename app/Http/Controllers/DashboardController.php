@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $team = Team::count();
         $c_project = Project::where('is_completed', 1)->count();
         $o_project = Project::where('is_completed', 0)->count();
-        $projects = Project::where('is_completed', 0)->select('title','progress')->latest()->take(20)->get();
+        $projects = Project::where('is_completed', 0)->where('progress','>=', 0)->select('title','progress')->latest()->get();
 
         return [
             'client' => $client,
