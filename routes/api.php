@@ -45,13 +45,14 @@ Route::post('/change_password/{id}',[LoginController::class,'changePassword']);
 Route::middleware(['auth:sanctum'])->group(function () {
 Route::apiResource('/dashboards',DashboardController::class);
 Route::post('/read',[DashboardController::class,'read']);
-Route::apiResource('/applicants',ApplicantController::class);
 
 Route::get('/get_contacts',[RequestedServiceController::class,'get_contacts']);
 Route::get('/get_jobs',[JobController::class,'get_jobs']);
 Route::post('/logout',[LoginController::class,'logout']);
 
 });
+Route::apiResource('/applicants',ApplicantController::class);
+
 Route::apiResource('/projects',ProjectController::class);
 Route::get('/get_teams',[TeamController::class,'get_teams']);
 Route::apiResource('/teams',TeamController::class);

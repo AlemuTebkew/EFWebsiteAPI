@@ -78,6 +78,7 @@ class ServiceController extends Controller
     {
         RequestedService::where('service_id',$service->id)->delete();
         $this->unlinkImage($service->photo);
+        $this->unlinkImage($service->logo);
         $service->delete();
     }
 
@@ -87,13 +88,36 @@ class ServiceController extends Controller
 
         $all = [];
 
-
-        $photo = $this->uploadImage($request->photo);
-
         $service = Service::find($id);
+
+        if($request->photo){
+        $photo = $this->uploadImage($request->photo);
         $this->unlinkImage($service->photo);
         $service->photo = $photo;
         $service->save();
         return response()->json($service->photo, 200);
+
+        }
+
+        if($request->icon){
+            $icon = $this->uploadImage($request->icon);
+            $this->unlinkImage($service->icon);
+            $service->icon = $icon;
+            $service->save();
+        }
+
+
+    }
+    public function updateLogo(Request $request, $id)
+    {
+
+
+        $logo = $this->uploadImage($request->logo);
+
+        $service = Service::find($id);
+        $this->unlinkImage($service->logo);
+        $service->logo = $logo;
+        $service->save();
+        return response()->json($service->logo, 200);
     }
 }
