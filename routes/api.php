@@ -49,6 +49,7 @@ Route::post('/read',[DashboardController::class,'read']);
 Route::get('/get_contacts',[RequestedServiceController::class,'get_contacts']);
 Route::get('/get_jobs',[JobController::class,'get_jobs']);
 Route::post('/logout',[LoginController::class,'logout']);
+Route::get('/get_applicants',[ApplicantController::class,'get_applicant']);
 
 });
 Route::apiResource('/applicants',ApplicantController::class);

@@ -57,18 +57,20 @@ class PermissionSeeder extends Seeder
             ['title' => 'Delete Department'],
             ['title' => 'Update Department'],
             ['title' => 'View Department'],
-            // ['title' => 'Add Category'],
-            // ['title' => 'Delete Category'],
-            // ['title' => 'Update Category'],
-            // ['title' => 'View Category'],
+            ['title' => 'Add Permission'],
+            ['title' => 'Delete Permission'],
+            ['title' => 'Update Permission'],
+            ['title' => 'View Permission'],
             ['title' => 'Add Applicant'],
             ['title' => 'Delete Applicant'],
             ['title' => 'Update Applicant'],
             ['title' => 'View Applicant'],
         ];
 
-        $role= Role::create(['title'=>'admin']);
-        User::create([
+        $role= Role::firstOrCreate(['title'=>'admin']);
+        User::firstOrCreate(
+            ['email'=>'alemteb1010@gmail.com'],
+            [
            'f_name'=>'Amare',
            'l_name'=>'Hore',
            'email'=>'alemteb1010@gmail.com',
@@ -77,9 +79,9 @@ class PermissionSeeder extends Seeder
            'role_id'=>$role->id,
         ]);
         foreach ($permissins as $p) {
-       $pp= Permission::create($p);
+       $pp= Permission::firstOrCreate($p);
 
-       PermissionRole::create(['role_id'=>$role->id,'permission_id'=>$pp->id]);
+       PermissionRole::firstOrCreate(['role_id'=>$role->id,'permission_id'=>$pp->id]);
 
         }
     }

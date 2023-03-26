@@ -27,6 +27,13 @@ class ApplicantController extends Controller
     public function index()
     {
 
+
+        return Applicant::with('job')->latest()->get();
+    }
+
+    public function get_applicant()
+    {
+
         auth()->user()->unreadNotifications->filter(function ($item) {
             return $item->data['type'] == 'job';
         })->markAsRead();
