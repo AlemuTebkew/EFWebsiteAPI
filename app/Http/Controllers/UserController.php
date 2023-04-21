@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::with('role')->get();
+        return User::with('role')->latest()->get();
     }
 
     /**
@@ -37,7 +37,7 @@ class UserController extends Controller
 
 
             return $photo ?  User::create([...$request->all(), 'photo' => $photo, 'is_active' => 1,'password'=>Hash::make('1234')])
-             : User::create([...$request->all(), 'is_active' => 1,'password'=>Hash::make('1234')]);
+             : User::create([...$request->all(), 'is_active' => 1,'password'=>Hash::make('12345678')]);
 
         } catch (\Throwable $th) {
             throw $th;

@@ -20,7 +20,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissins = [
-            ['title' => 'dashboard'],
+            // ['title' => 'dashboard'],
             ['title' => 'Add News'],
             ['title' => 'Delete News'],
             ['title' => 'Update News'],
@@ -65,6 +65,10 @@ class PermissionSeeder extends Seeder
             ['title' => 'Delete Applicant'],
             ['title' => 'Update Applicant'],
             ['title' => 'View Applicant'],
+            ['title' => 'Add Shortlist'],
+            ['title' => 'Delete Shortlist'],
+            ['title' => 'Update Shortlist'],
+            ['title' => 'View Shortlist'],
         ];
 
         $role= Role::firstOrCreate(['title'=>'admin']);

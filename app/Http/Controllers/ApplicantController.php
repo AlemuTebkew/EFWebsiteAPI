@@ -30,6 +30,18 @@ class ApplicantController extends Controller
 
         return Applicant::with('job')->latest()->get();
     }
+    public function get_liked()
+    {
+        return Applicant::with('job')->where('liked',1)->latest()->get();
+    }
+    public function set_liked(Request $request,$id)
+    {
+        $app= Applicant::find($id);
+        $app->liked=$request->liked;
+        $app->save();
+
+        return $app;
+    }
 
     public function get_applicant()
     {
@@ -93,7 +105,7 @@ class ApplicantController extends Controller
 
             $data = [
 
-                'title' => 'New Job Applied',
+                'title' => 'New Applicant Notification',
                 'message' => $request->message . substr(0, 50),
                 'time' => new Date(),
                 'type' => 'job'

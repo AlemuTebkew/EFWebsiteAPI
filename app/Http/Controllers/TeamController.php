@@ -16,11 +16,11 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return Team::all();
+        return Team::latest()->get();
     }
     public function get_teams()
     {
-        return Team::where('is_active', 1)->get();
+        return Team::where('is_active', 1)->latest()->get();
     }
 
     /**
@@ -90,6 +90,8 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
+        if($team->photo)
+        $this->unlinkImage($team->photo);
         $team->delete();
     }
 }

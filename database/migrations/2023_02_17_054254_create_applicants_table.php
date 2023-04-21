@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('sub_city')->nullable();
             $table->string('woreda')->nullable();
             $table->string('cv')->nullable();
+            $table->string('liked')->default(0);
             $table->string('supporting_doc')->nullable();
             $table->foreignId('job_id')->constrained('jobs');
 

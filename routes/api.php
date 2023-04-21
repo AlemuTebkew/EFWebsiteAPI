@@ -50,6 +50,8 @@ Route::get('/get_contacts',[RequestedServiceController::class,'get_contacts']);
 Route::get('/get_jobs',[JobController::class,'get_jobs']);
 Route::post('/logout',[LoginController::class,'logout']);
 Route::get('/get_applicants',[ApplicantController::class,'get_applicant']);
+Route::get('/get_liked',[ApplicantController::class,'get_liked']);
+Route::post('/set_liked/{id}',[ApplicantController::class,'set_liked']);
 
 });
 Route::apiResource('/applicants',ApplicantController::class);
